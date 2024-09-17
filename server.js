@@ -11,10 +11,10 @@ app.use(cors());
 
 // Initialize the OpenAI instance
 const openai = new OpenAI({
-    apiKey: OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
-const assistant = await openai.beta.assistants.retrieve(ASSISTANT_ID);
+const assistant = await openai.beta.assistants.retrieve(process.env.ASSISTANT_ID);
 
 const thread = await openai.beta.threads.create();
 
