@@ -3,7 +3,6 @@ import { OpenAI } from 'openai';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,12 +11,10 @@ app.use(cors());
 
 // Initialize the OpenAI instance
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: OPENAI_API_KEY,
 });
 
-const assistant = await openai.beta.assistants.retrieve(
-    process.env.ASSISTANT
-);
+const assistant = await openai.beta.assistants.retrieve(ASSISTANT_ID);
 
 const thread = await openai.beta.threads.create();
 
