@@ -50,7 +50,8 @@ app.post('/processUserMessage', async (req, res) => {
         });
 
         const run = await openai.beta.threads.runs.create(thread.id, {
-            assistant_id: assistant.id
+            assistant_id: assistant.id,
+            model: "gpt-4o-mini"
         });
 
         let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
